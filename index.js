@@ -26,19 +26,22 @@ let persons = [
   }
 ]
 
-// app.get('/info', (req, res) => {
-//   res.send(`<p>Phonebook has info for ${persons.length} people</p><p>${new Date()}</p>`)
-//   res.send(`
-//     <div>
-//       <p>Phonebook has info for ${persons.length} people</p>
-//       <p>${new Date()}</p>
-//     </div>
-//   `)
-// })
+app.get('/info', (req, res) => {
+  const numberOfPeople = persons.length;
+  const requestTime = new Date();
+
+  const response = `
+    <p>Phonebook has info for ${numberOfPeople} people</p>
+    <p>${requestTime}</p>
+  `;
+
+  res.send(response);
+});
 
 app.get('/api/persons', (req, res) => {
   res.json(persons)
 })
+
 
 const PORT = 3001
 app.listen(PORT, () => {
